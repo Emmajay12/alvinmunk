@@ -31,14 +31,10 @@ export const rootMetadata: Metadata = {
   description: SITE_DESCRIPTION,
   openGraph: { type: 'website', images: [DEFAULT_OG_IMAGE] },
   twitter: { card: 'summary_large_image' },
-  icons: {
-    icon: [{ url: '/assets/meta/favicon-32.png', type: 'image/png' }],
-    // iOS ignores the manifest icons for the home-screen tile — it needs this link
-    // relation explicitly (#292).
-    apple: [
-      { url: '/assets/brand/alvinmunk-apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-  },
+  // No `icons`: app/favicon.ico, app/icon.svg and app/apple-icon.png are the one icon set
+  // (scripts/brand-icons.mjs). Next emits file icons AND this field, so an entry here would
+  // ship a second favicon (#504). apple-icon.png is the explicit apple-touch-icon link iOS
+  // needs for the home-screen tile: it ignores the manifest icons (#292).
 };
 
 // A registry handle is a Soroban `Symbol` (a-z, 0-9, _; at most 32 chars), read lowercased.
